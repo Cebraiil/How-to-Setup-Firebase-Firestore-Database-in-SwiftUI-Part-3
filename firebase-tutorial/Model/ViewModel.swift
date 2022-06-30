@@ -11,6 +11,20 @@ import Firebase
 class ViewModel : ObservableObject {
     @Published var list = [User]()
     
+    func addData(name:String, email: String) {
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").addDocument(data: ["name": name, "email": email]) { error in
+            
+            if error == nil {
+                self.getData()
+            } else {
+                
+            }
+        }
+    }
+    
     func getData() {
         let db = Firestore.firestore()
         
