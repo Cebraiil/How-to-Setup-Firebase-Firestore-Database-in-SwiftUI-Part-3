@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
+    
     let constantToNeverTouch = FirebaseApp.configure()
     
     @State var name = ""
@@ -22,6 +23,12 @@ struct ContentView: View {
                     Text(item.name)
                     Spacer()
                     Text(item.email)
+                    Button {
+                        model.deleteData(userToDelete: item)
+                    } label: {
+                        Image(systemName: "minus.circle")
+                            .foregroundColor(.red)
+                    }
                 }
             }
             VStack {
